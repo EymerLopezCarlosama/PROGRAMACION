@@ -1,0 +1,574 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Ejemplo2",
+            "request": "launch",
+            "mainClass": "QUEUE.Ejemplo2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO3",
+            "request": "launch",
+            "mainClass": "EJEMPLO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EncuestaCanciones",
+            "request": "launch",
+            "mainClass": "STIVEN.EncuestaCanciones",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "parcialPunto1",
+            "request": "launch",
+            "mainClass": "STIVEN.parcialPunto1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo1",
+            "request": "launch",
+            "mainClass": "QUEUE.Ejemplo1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO7",
+            "request": "launch",
+            "mainClass": "EJEMPLO7",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO1",
+            "request": "launch",
+            "mainClass": "EJEMPLO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO2",
+            "request": "launch",
+            "mainClass": "EJEMPLO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "STIVEN.Main",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo2",
+            "request": "launch",
+            "mainClass": "Ejemplo2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejercicio1_1",
+            "request": "launch",
+            "mainClass": "PARCIAL.Ejercicio1_1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "ejercicio2main",
+            "request": "launch",
+            "mainClass": "ejercicio2main",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EncuestaCanciones",
+            "request": "launch",
+            "mainClass": "EncuestaCanciones",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "PAO",
+            "request": "launch",
+            "mainClass": "PAO",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "STIVEN",
+            "request": "launch",
+            "mainClass": "STIVEN",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Primero",
+            "request": "launch",
+            "mainClass": "PARCIAL.Primero",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejercicio2",
+            "request": "launch",
+            "mainClass": "PARCIAL.Ejercicio2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejercicio1",
+            "request": "launch",
+            "mainClass": "PARCIAL.Ejercicio1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo10",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo10",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo9",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo9",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo1",
+            "request": "launch",
+            "mainClass": "Ejemplo1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo8",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo8",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo7",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo7",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO5_2",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO5_2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "MAIN",
+            "request": "launch",
+            "mainClass": "TALLER_2.OBJETOS.MAIN",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO6",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO6",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO5",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO5",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO2",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO1",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO4",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO3",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICIO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICO1",
+            "request": "launch",
+            "mainClass": "TALLER_2.EJERCICO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO7",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO7",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "MAIN",
+            "request": "launch",
+            "mainClass": "PILAS_Y_OBJETOS.MAIN",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo4",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo3",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo2",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo1",
+            "request": "launch",
+            "mainClass": "PILAS.Ejemplo1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO6",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO6",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO1PRO",
+            "request": "launch",
+            "mainClass": "ESTRUCTURA_2_GRUPO.EJERCICIO1PRO",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO2",
+            "request": "launch",
+            "mainClass": "ESTRUCTURA_2_GRUPO.EJERCICIO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICO1",
+            "request": "launch",
+            "mainClass": "ESTRUCTURA_2_GRUPO.EJERCICO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "PRUEBABASICO",
+            "request": "launch",
+            "mainClass": "ESTRUCTURA_2_GRUPO.PRUEBABASICO",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "MetodoShellSort",
+            "request": "launch",
+            "mainClass": "EXPOSICION.MetodoShellSort",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "MetodoShellSortComentadoTotal",
+            "request": "launch",
+            "mainClass": "EXPOSICION.MetodoShellSortComentadoTotal",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "MetodoShellSortModificado",
+            "request": "launch",
+            "mainClass": "EXPOSICION.MetodoShellSortModificado",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO1",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO2",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO3",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO4",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO5",
+            "request": "launch",
+            "mainClass": "MATRICES.EJEMPLO5",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "InterfazGrafica",
+            "request": "launch",
+            "mainClass": "PROYECTO.InterfazGrafica",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "TestConnection",
+            "request": "launch",
+            "mainClass": "PROYECTO.TestConnection",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO1",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO10",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO10",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO11",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO11",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO2(1)",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO3",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO4",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO5",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO5",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO6",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO6",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO7",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO7",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO8",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO8",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO9",
+            "request": "launch",
+            "mainClass": "REPASO_JAVA.EJERCICIO9",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Taller",
+            "request": "launch",
+            "mainClass": "TALLER.Taller",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO2(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO2_1",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO2_1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO3(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO4(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO4_1",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO4_1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO5(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO5",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO6",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO6",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJEMPLO7",
+            "request": "launch",
+            "mainClass": "VECTORES.EJEMPLO7",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO1(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJERCICIO1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO2(2)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJERCICIO2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO3(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJERCICIO3",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO4(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJERCICIO4",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "EJERCICIO5(1)",
+            "request": "launch",
+            "mainClass": "VECTORES.EJERCICIO5",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Empresa",
+            "request": "launch",
+            "mainClass": "VECTORES_OBJETOS.Empresa",
+            "projectName": "PROGRAMACION_9aeda32f"
+        }
+    ]
+}
