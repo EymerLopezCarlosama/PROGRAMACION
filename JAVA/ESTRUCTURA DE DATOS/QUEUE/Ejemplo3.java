@@ -25,6 +25,7 @@ public class Ejemplo3 {
         }
     }
 
+
     // Método para eliminar un elemento de la cola
     int eliminar(){
         // Verifica si la cola está vacía
