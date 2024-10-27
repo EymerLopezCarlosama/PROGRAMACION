@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class EJEMPLO1 {
-
+    
     public static void main(String[] args) {
         
         int[][] matriz = new int[5][3]; // Declarar una matriz de enteros con 5 filas y 3 columnas

@@ -1,6 +1,3 @@
-
-/* GENERAR UNA MATRIZ DE 3x7 Y LLENARLA */
-
 import javax.swing.*;
 
 

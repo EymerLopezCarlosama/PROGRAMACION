@@ -43,4 +43,5 @@ public class EJEMPLO2 {
         JOptionPane.showMessageDialog(null, "La suma de todos los datos de la matriz es: " + suma);
 
     }
+
 }
