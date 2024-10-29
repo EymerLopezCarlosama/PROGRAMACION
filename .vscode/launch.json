@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Ejemplo6",
+            "request": "launch",
+            "mainClass": "QUEUE.Ejemplo6",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
             "name": "Ejemplo5",
             "request": "launch",
             "mainClass": "QUEUE.Ejemplo5",
