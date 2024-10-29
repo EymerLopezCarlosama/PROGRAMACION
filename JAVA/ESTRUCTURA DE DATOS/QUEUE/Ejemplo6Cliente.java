@@ -1,0 +1,21 @@
+package QUEUE;
+
+public class Ejemplo6Cliente {
+
+    private String nombre;
+
+    public Ejemplo6Cliente(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+
+}
