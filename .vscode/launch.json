@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Acciones",
+            "request": "launch",
+            "mainClass": "LINKEDLIST.Acciones",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo1",
+            "request": "launch",
+            "mainClass": "LINKEDLIST.Ejemplo1",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Mensaje",
+            "request": "launch",
+            "mainClass": "STIVEN.Mensaje",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
             "name": "Ejemplo6",
             "request": "launch",
             "mainClass": "QUEUE.Ejemplo6",

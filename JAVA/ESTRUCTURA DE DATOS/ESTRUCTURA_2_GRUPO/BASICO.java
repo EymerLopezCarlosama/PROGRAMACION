@@ -1,5 +1,3 @@
-package ESTRUCTURA_2_GRUPO;
-
 public class BASICO {
 
     String nombres[] = {"Eymer", "Paola", "Tatiana", "Camila"};

@@ -1,5 +1,3 @@
-package ESTRUCTURA_2_GRUPO;
-
 public class PRUEBABASICO {
 
     public static void main(String[] args) {
