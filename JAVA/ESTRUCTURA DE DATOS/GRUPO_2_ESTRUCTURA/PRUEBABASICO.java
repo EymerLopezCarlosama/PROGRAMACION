@@ -1,3 +1,4 @@
+package GRUPO_2_ESTRUCTURA;
 public class PRUEBABASICO {
 
     public static void main(String[] args) {

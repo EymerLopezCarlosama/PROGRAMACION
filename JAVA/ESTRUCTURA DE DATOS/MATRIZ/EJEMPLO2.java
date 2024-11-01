@@ -1,3 +1,4 @@
+package MATRIZ;
 import javax.swing.*;
 
 public class EJEMPLO2 {

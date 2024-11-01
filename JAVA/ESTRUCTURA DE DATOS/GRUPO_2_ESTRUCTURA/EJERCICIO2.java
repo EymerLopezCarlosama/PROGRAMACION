@@ -1,3 +1,4 @@
+package GRUPO_2_ESTRUCTURA;
 /*Obtener el promedio de 5 temperaturas
  *Imprimir las temperaturas mayores a 15 y cuente cuantas hay
  *Buscar una temperatura en el arreglo e indicar si esta registrada o no
