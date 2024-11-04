@@ -2,7 +2,7 @@
 
 int main(){
     
-std::cout<<"Hola Mundo!"<<std::endl; //std::endl general un saldo de linea
+std::cout<<"Hola Mundo!"<<std::endl; //std::endl genera un salto de linea
 std::cout<<"Hello wordl!";
 
 return 0;
