@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BusquedasEjercico2",
+            "request": "launch",
+            "mainClass": "STIVEN.BusquedasEjercico2",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "TREES.Main",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Ejemplo",
+            "request": "launch",
+            "mainClass": "TREES.Ejemplo",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "PruebaElectrodomesticos",
+            "request": "launch",
+            "mainClass": "STIVEN.PruebaElectrodomesticos",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "PruebaPersona",
+            "request": "launch",
+            "mainClass": "STIVEN.PruebaPersona",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
             "name": "Ejemplo3",
             "request": "launch",
             "mainClass": "LINKEDLIST.Ejemplo3",
