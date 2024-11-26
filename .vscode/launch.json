@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Personas",
+            "request": "launch",
+            "mainClass": "STIVEN.Personas",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
             "name": "ArbolRojoNegroGrafico",
             "request": "launch",
             "mainClass": "ArbolRojoNegroGrafico",
