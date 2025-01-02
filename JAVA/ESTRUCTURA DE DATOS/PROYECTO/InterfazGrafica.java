@@ -329,13 +329,46 @@ public class InterfazGrafica {
                                             psTicket.executeUpdate(); // Ejecutar la inserción
                                         }
 
+                                        // Guardar la información en la tabla Impresion (Boleto de abordaje)
+                                        String sqlImpresion = "INSERT INTO Impresion (nombreCompleto, tipoIdentificacion, identificacion, correoElectronico, telefono, nombreContactoEmergencia, telefonoContactoEmergencia, parentescoContactoEmergencia, origen, destino, horaSalida, diaSalida, aerolinea, clase, tarifa) "
+                                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                                        try (PreparedStatement psImpresion = con.prepareStatement(sqlImpresion)) {
+                                        psImpresion.setString(1, nombreCompletoField.getText());
+                                        psImpresion.setString(2, (String) tipoIdentificacionComboBox.getSelectedItem());
+                                        psImpresion.setString(3, identificacionField.getText());
+                                        psImpresion.setString(4, correoField.getText());
+                                        psImpresion.setString(5, telefonoField.getText());
+                                        psImpresion.setString(6, contactoEmergenciaField.getText());
+                                        psImpresion.setString(7, telefonoEmergenciaField.getText());
+                                        psImpresion.setString(8, parentescoEmergenciaField.getText());
+                                        psImpresion.setString(9, vueloPartida);
+                                        psImpresion.setString(10, vueloDestino);
+                                        psImpresion.setString(11, hora);
+                                        psImpresion.setString(12, fecha);
+                                        psImpresion.setString(13, avion);
+                                        psImpresion.setString(14, clase);
+                                        psImpresion.setString(15, tarifa);
+
+                                        psImpresion.executeUpdate();
+                                        System.out.println("Información guardada correctamente en la tabla Impresion.");
+                                        } catch (SQLException ex) {  // Usé 'ex' aquí
+                                        System.err.println("Error al guardar la información en la tabla Impresion.");
+                                        ex.printStackTrace();
+                                        }
+
+
                                         JOptionPane.showMessageDialog(frameAdquirirVuelo, "Vuelo adquirido exitosamente.");
                                         frameAdquirirVuelo.dispose();
 
+                                        
                                     } catch (SQLException ex) {
                                         ex.printStackTrace();
                                         JOptionPane.showMessageDialog(frameAdquirirVuelo, "Error al guardar en la base de datos: " + ex.getMessage());
                                     }
+
+                                
+
                                 }
                             }
                         }
@@ -352,124 +385,164 @@ public class InterfazGrafica {
         frameImprimirTicket.setBounds(100, 100, 600, 400);
         frameImprimirTicket.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameImprimirTicket.getContentPane().setLayout(null);
-
+    
         JLabel lblTitulo = new JLabel("Ingrese su número de identificación:");
         lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
         lblTitulo.setBounds(10, 10, 300, 30);
         frameImprimirTicket.add(lblTitulo);
-
+    
         JTextField identificacionField = new JTextField();
         identificacionField.setBounds(10, 50, 200, 25);
         frameImprimirTicket.add(identificacionField);
-
+    
         JButton btnImprimir = new JButton("Imprimir Ticket");
         btnImprimir.setBounds(10, 90, 200, 30);
         frameImprimirTicket.add(btnImprimir);
+    
         btnImprimir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String identificacion = identificacionField.getText();
-                String query = "SELECT * FROM Ticket WHERE identificacion = ?";
+                
+                // Validación de identificación vacía
+                if (identificacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(frameImprimirTicket, "Debe ingresar un número de identificación.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+    
+                String query = "SELECT t.*, p.nombreCompleto, p.correoElectronico FROM Ticket t "
+                                + "JOIN Pasajero p ON t.pasajero_id = p.id WHERE p.identificacion = ?";
+    
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root", "eymerl26");
                      PreparedStatement ps = conn.prepareStatement(query)) {
+    
                     ps.setString(1, identificacion);
                     ResultSet rs = ps.executeQuery();
+    
                     if (rs.next()) {
-                        String contenidoTicket = "Clase: " + rs.getString("clase") + "\nTarifa: " + rs.getString("tarifa");
-
+                        String contenidoTicket = "Nombre: " + rs.getString("nombreCompleto") + "\n"
+                                               + "Clase: " + rs.getString("clase") + "\n"
+                                               + "Tarifa: " + rs.getString("tarifa") + "\n"
+                                               + "Origen: " + rs.getString("origen") + "\n"
+                                               + "Destino: " + rs.getString("destino") + "\n"
+                                               + "Hora de Salida: " + rs.getString("hora_salida") + "\n"
+                                               + "Fecha de Salida: " + rs.getString("dia_salida");
+    
                         JDialog dialog = new JDialog(frameImprimirTicket, "Ticket", true);
                         dialog.setBounds(100, 100, 500, 400);
                         dialog.getContentPane().setLayout(new BorderLayout());
-
+    
                         JTextArea textArea = new JTextArea(contenidoTicket);
                         textArea.setEditable(false);
                         JScrollPane scrollPane = new JScrollPane(textArea);
                         dialog.getContentPane().add(scrollPane, BorderLayout.CENTER);
-
+    
                         JButton btnCerrar = new JButton("Cerrar");
                         btnCerrar.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 dialog.dispose();
                             }
                         });
+    
                         JPanel panelBoton = new JPanel();
                         panelBoton.add(btnCerrar);
                         dialog.getContentPane().add(panelBoton, BorderLayout.SOUTH);
-
+    
                         dialog.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(frameImprimirTicket, "No se encontró el ticket para la identificación proporcionada.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
+    
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(frameImprimirTicket, "Error al obtener el ticket: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     ex.printStackTrace();
                 }
-            }        });
-
+            }
+        });
+    
         frameImprimirTicket.setVisible(true);
     }
+    
 
     private void modificarTicketYVuelo() {
         JFrame frameModificar = new JFrame("Modificar Ticket y Vuelo");
         frameModificar.setBounds(100, 100, 600, 400);
         frameModificar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameModificar.getContentPane().setLayout(null);
-
+    
         JLabel lblTitulo = new JLabel("Ingrese su número de identificación:");
         lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
         lblTitulo.setBounds(10, 10, 300, 30);
         frameModificar.add(lblTitulo);
-
+    
         JTextField identificacionField = new JTextField();
         identificacionField.setBounds(10, 50, 200, 25);
         frameModificar.add(identificacionField);
-
+    
         JButton btnModificar = new JButton("Modificar Ticket y Vuelo");
         btnModificar.setBounds(10, 90, 200, 30);
         frameModificar.add(btnModificar);
+    
         btnModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String identificacion = identificacionField.getText();
+                if (identificacion.isEmpty()) {
+                    JOptionPane.showMessageDialog(frameModificar, "Debe ingresar un número de identificación.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+    
                 JFrame frameModificarDatos = new JFrame("Modificar Datos");
                 frameModificarDatos.setBounds(100, 100, 600, 400);
                 frameModificarDatos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frameModificarDatos.getContentPane().setLayout(null);
-
+    
                 JLabel lblTituloDatos = new JLabel("Ingrese los nuevos datos:");
                 lblTituloDatos.setFont(new Font("Tahoma", Font.PLAIN, 16));
                 lblTituloDatos.setBounds(10, 10, 300, 30);
                 frameModificarDatos.add(lblTituloDatos);
-
+    
                 JTextField nuevoClaseField = new JTextField();
                 nuevoClaseField.setBounds(150, 50, 200, 25);
                 frameModificarDatos.add(nuevoClaseField);
-
+    
                 JLabel lblNuevoClase = new JLabel("Nueva Clase:");
                 lblNuevoClase.setFont(new Font("Tahoma", Font.PLAIN, 14));
                 lblNuevoClase.setBounds(10, 50, 200, 25);
                 frameModificarDatos.add(lblNuevoClase);
-
+    
                 JTextField nuevoTarifaField = new JTextField();
                 nuevoTarifaField.setBounds(150, 80, 200, 25);
                 frameModificarDatos.add(nuevoTarifaField);
-
+    
                 JLabel lblNuevoTarifa = new JLabel("Nueva Tarifa:");
                 lblNuevoTarifa.setFont(new Font("Tahoma", Font.PLAIN, 14));
                 lblNuevoTarifa.setBounds(10, 80, 200, 25);
                 frameModificarDatos.add(lblNuevoTarifa);
-
+    
                 JButton btnConfirmarModificar = new JButton("Confirmar Modificación");
                 btnConfirmarModificar.setBounds(10, 120, 200, 30);
                 frameModificarDatos.add(btnConfirmarModificar);
+    
                 btnConfirmarModificar.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         String nuevaClase = nuevoClaseField.getText();
                         String nuevaTarifa = nuevoTarifaField.getText();
-                        String query = "UPDATE Ticket SET clase = ?, tarifa = ? WHERE identificacion = ?";
+    
+                        if (nuevaClase.isEmpty() || nuevaTarifa.isEmpty()) {
+                            JOptionPane.showMessageDialog(frameModificarDatos, "Por favor ingrese todos los datos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                            return;
+                        }
+    
+                        String query = "UPDATE Ticket t "
+                                     + "JOIN Pasajero p ON t.pasajero_id = p.id "
+                                     + "SET t.clase = ?, t.tarifa = ? "
+                                     + "WHERE p.identificacion = ?";
+    
                         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root", "eymerl26");
                              PreparedStatement ps = conn.prepareStatement(query)) {
                             ps.setString(1, nuevaClase);
                             ps.setString(2, nuevaTarifa);
                             ps.setString(3, identificacion);
+    
                             int filasAfectadas = ps.executeUpdate();
                             if (filasAfectadas > 0) {
                                 JOptionPane.showMessageDialog(frameModificarDatos, "Ticket modificado exitosamente.");
@@ -481,14 +554,16 @@ public class InterfazGrafica {
                             ex.printStackTrace();
                         }
                         frameModificarDatos.dispose();
-                    }                });
-
+                    }
+                });
+    
                 frameModificarDatos.setVisible(true);
             }
         });
-
+    
         frameModificar.setVisible(true);
     }
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -501,5 +576,7 @@ public class InterfazGrafica {
                 new InterfazGrafica(); // Crear y mostrar la interfaz gráfica
             }
         });
+        System.out.println("Conexión exitosa a la base de datos");
+
     }
 }

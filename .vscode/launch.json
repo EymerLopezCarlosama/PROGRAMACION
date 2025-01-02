@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Eliminar_Nodos_Duplicados",
+            "request": "launch",
+            "mainClass": "JAVA.TRABAJO_VACACIONES.Eliminar_Nodos_Duplicados",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
+            "name": "Inversion_Lista",
+            "request": "launch",
+            "mainClass": "JAVA.TRABAJO_VACACIONES.Inversion_Lista",
+            "projectName": "PROGRAMACION_9aeda32f"
+        },
+        {
+            "type": "java",
             "name": "Personas",
             "request": "launch",
             "mainClass": "STIVEN.Personas",
