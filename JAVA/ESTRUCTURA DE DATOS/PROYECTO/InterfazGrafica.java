@@ -26,12 +26,23 @@ public class InterfazGrafica {
     // Método para conectar a la base de datos
     private void connectToDatabase() {
         try {
-            // Cambia estos valores a los adecuados para tu configuración
+            Class.forName("com.mysql.cj.jdbc.Driver"); // Agregar esta línea
             String url = "jdbc:mysql://localhost:3306/basedatos";
             String user = "root";
             String password = "eymerl26";
-            DriverManager.getConnection(url, user, password);
+            
+            // Guardar la conexión en una variable
+            Connection connection = DriverManager.getConnection(url, user, password);
+            
+            if (connection != null) {
+                System.out.println("Conexión exitosa a la base de datos");
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error: No se encontró el driver de MySQL");
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error con el driver de MySQL", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
+            System.out.println("Error de conexión: " + e.getMessage());
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -288,7 +299,7 @@ public class InterfazGrafica {
                                         }
 
                                         // Preparar la consulta para guardar el vuelo
-                                        String sqlVuelo = "INSERT INTO Vuelo (origen, destino, hora_salida, dia_salida, aerolinea) VALUES (?, ?, ?, ?, ?)";
+                                        String sqlVuelo = "INSERT INTO Vuelo (origen, destino, horasalida, diasalida, aerolinea) VALUES (?, ?, ?, ?, ?)";
                                         int idVuelo = 0;
                                         try (PreparedStatement psVuelo = con.prepareStatement(sqlVuelo, Statement.RETURN_GENERATED_KEYS)) {
                                             psVuelo.setString(1, vueloPartida);
@@ -319,7 +330,7 @@ public class InterfazGrafica {
                                         String tarifa = (String) JOptionPane.showInputDialog(frameAdquirirVuelo, "Seleccione la tarifa del ticket", "Seleccionar Tarifa", JOptionPane.QUESTION_MESSAGE, null, opcionesTarifa, opcionesTarifa[0]);
 
                                         // Preparar la consulta para guardar el ticket
-                                        String sqlTicket = "INSERT INTO Ticket (Numero_vuelo, clase, tarifa, pasajero_id, vuelo_id) VALUES (?, ?, ?, ?, ?)";
+                                        String sqlTicket = "INSERT INTO Ticket (numeroVuelo, clase, tarifa, idPasajero, idVuelo) VALUES (?, ?, ?, ?, ?)";
                                         try (PreparedStatement psTicket = con.prepareStatement(sqlTicket)) {
                                             psTicket.setString(1, hora);
                                             psTicket.setString(2, clase);

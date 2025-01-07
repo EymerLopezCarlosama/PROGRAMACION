@@ -67,5 +67,15 @@
         "text_encoding": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp"
-    }
+    },
+    "java.project.sourcePaths": [
+        "JAVA\\ESTRUCTURA DE DATOS"
+    ],
+    "java.project.referencedLibraries": [
+        "JAVA\\ESTRUCTURA DE DATOS\\lib\\jcalendar-1.4.jar",
+        "JAVA\\ESTRUCTURA DE DATOS\\lib\\jgoodies-common-1.2.0.jar",
+        "JAVA\\ESTRUCTURA DE DATOS\\lib\\jgoodies-looks-2.4.1.jar",
+        "JAVA\\ESTRUCTURA DE DATOS\\lib\\junit-4.6.jar",
+        "JAVA\\ESTRUCTURA DE DATOS\\lib\\mysql-connector-j-9.1.0.jar"
+    ]
 }
