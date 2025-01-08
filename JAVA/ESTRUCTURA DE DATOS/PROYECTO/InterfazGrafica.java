@@ -1,12 +1,14 @@
 package PROYECTO;
 
 import javax.swing.*;
+import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.awt.print.PrinterException;
 
 public class InterfazGrafica {
     // Atributos de la interfaz gráfica
@@ -260,13 +262,16 @@ public class InterfazGrafica {
 
                         if (hora != null) {
                             // Selección de fecha
-                            JSpinner dateSpinner = new JSpinner(new SpinnerDateModel());
-                            JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
-                            dateSpinner.setEditor(dateEditor);
-                            int result = JOptionPane.showConfirmDialog(frameAdquirirVuelo, dateSpinner, "Seleccione la fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                            JDateChooser dateChooser = new JDateChooser();
+                            dateChooser.setDateFormatString("yyyy-MM-dd");
+                            dateChooser.setMinSelectableDate(new Date()); // Esto evita que se seleccionen fechas pasadas
+
+                            int result = JOptionPane.showConfirmDialog(frameAdquirirVuelo, dateChooser, 
+                                "Seleccione la fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
                 
                             if (result == JOptionPane.OK_OPTION) {
-                                Date selectedDate = (Date) dateSpinner.getValue();
+                                Date selectedDate = (Date) dateChooser.getDate();
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                                 String fecha = sdf.format(selectedDate);
 
@@ -320,14 +325,24 @@ public class InterfazGrafica {
                                         Object[] opcionesClase = {"Económica", "Ejecutiva", "Primera Clase"};
                                         String clase = (String) JOptionPane.showInputDialog(frameAdquirirVuelo, "Seleccione la clase del ticket", "Seleccionar Clase", JOptionPane.QUESTION_MESSAGE, null, opcionesClase, opcionesClase[0]);
 
+                                        // Modificar el array de tarifas
                                         Object[] opcionesTarifa = {
-                                            "Tarifa I: Incluye un bolso pequeño de 5 kg con precio $50000",
-                                            "Tarifa II: Incluye un bolso mediano de 10 kg con precio $100000",
-                                            "Tarifa III: Incluye un bolso grande de 12,5 kg con precio $150000",
-                                            "Tarifa IV: Incluye un bolso pequeño de 5 kg + una maleta de bodega pequeña de 17.5 kg, con un precio de $220000",
-                                            "Tarifa V: Incluye un bolso grande de 12,5 kg + una maleta de bodega grande de 23,5 kg, con un precio de $580000"
+                                            "Tarifa I - Bolso 5kg ($50000)",
+                                            "Tarifa II - Bolso 10kg ($100000)",
+                                            "Tarifa III - Bolso 12.5kg ($150000)",
+                                            "Tarifa IV - Bolso 5kg + Maleta 17.5kg ($220000)",
+                                            "Tarifa V - Bolso 12.5kg + Maleta 23.5kg ($580000)"
                                         };
-                                        String tarifa = (String) JOptionPane.showInputDialog(frameAdquirirVuelo, "Seleccione la tarifa del ticket", "Seleccionar Tarifa", JOptionPane.QUESTION_MESSAGE, null, opcionesTarifa, opcionesTarifa[0]);
+                                        String tarifa = (String) JOptionPane.showInputDialog(frameAdquirirVuelo, 
+                                            "Seleccione la tarifa del ticket:\n\n" +
+                                            "Tarifa I: Bolso pequeño (5kg)\n" +
+                                            "Tarifa II: Bolso mediano (10kg)\n" +
+                                            "Tarifa III: Bolso grande (12.5kg)\n" +
+                                            "Tarifa IV: Bolso pequeño + maleta bodega pequeña (22.5kg)\n" +
+                                            "Tarifa V: Bolso grande + maleta bodega grande (36kg)", 
+                                            "Seleccionar Tarifa",
+                                        JOptionPane.QUESTION_MESSAGE,null,opcionesTarifa,opcionesTarifa[0]
+                                    );
 
                                         // Preparar la consulta para guardar el ticket
                                         String sqlTicket = "INSERT INTO Ticket (numeroVuelo, clase, tarifa, idPasajero, idVuelo) VALUES (?, ?, ?, ?, ?)";
@@ -420,8 +435,11 @@ public class InterfazGrafica {
                     return;
                 }
     
-                String query = "SELECT t.*, p.nombreCompleto, p.correoElectronico FROM Ticket t "
-                                + "JOIN Pasajero p ON t.pasajero_id = p.id WHERE p.identificacion = ?";
+                String query = "SELECT t.*, p.*, v.* " +
+                         "FROM Ticket t " +
+                         "JOIN Pasajero p ON t.idPasajero = p.id " +
+                         "JOIN Vuelo v ON t.idVuelo = v.id " +
+                         "WHERE p.identificacion = ?";
     
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root", "eymerl26");
                      PreparedStatement ps = conn.prepareStatement(query)) {
@@ -430,43 +448,76 @@ public class InterfazGrafica {
                     ResultSet rs = ps.executeQuery();
     
                     if (rs.next()) {
-                        String contenidoTicket = "Nombre: " + rs.getString("nombreCompleto") + "\n"
-                                               + "Clase: " + rs.getString("clase") + "\n"
-                                               + "Tarifa: " + rs.getString("tarifa") + "\n"
-                                               + "Origen: " + rs.getString("origen") + "\n"
-                                               + "Destino: " + rs.getString("destino") + "\n"
-                                               + "Hora de Salida: " + rs.getString("hora_salida") + "\n"
-                                               + "Fecha de Salida: " + rs.getString("dia_salida");
+                        StringBuilder contenidoTicket = new StringBuilder();
+                            contenidoTicket.append("=== TICKET DE VUELO ===\n\n");
+                            contenidoTicket.append("DATOS DEL PASAJERO:\n");
+                            contenidoTicket.append("Nombre: ").append(rs.getString("nombreCompleto")).append("\n");
+                            contenidoTicket.append("Identificación: ").append(rs.getString("identificacion")).append("\n");
+                            contenidoTicket.append("Correo: ").append(rs.getString("correoElectronico")).append("\n");
+                            contenidoTicket.append("Teléfono: ").append(rs.getString("telefono")).append("\n\n");
+                            
+                            contenidoTicket.append("DATOS DEL VUELO:\n");
+                            contenidoTicket.append("Origen: ").append(rs.getString("origen")).append("\n");
+                            contenidoTicket.append("Destino: ").append(rs.getString("destino")).append("\n");
+                            contenidoTicket.append("Fecha: ").append(rs.getString("diasalida")).append("\n");
+                            contenidoTicket.append("Hora: ").append(rs.getString("horasalida")).append("\n");
+                            contenidoTicket.append("Aerolínea: ").append(rs.getString("aerolinea")).append("\n\n");
+                            
+                            contenidoTicket.append("DETALLES DEL TICKET:\n");
+                            contenidoTicket.append("Clase: ").append(rs.getString("clase")).append("\n");
+                            contenidoTicket.append("Tarifa: ").append(rs.getString("tarifa")).append("\n");
     
+                        // Crear diálogo para mostrar el ticket
                         JDialog dialog = new JDialog(frameImprimirTicket, "Ticket", true);
-                        dialog.setBounds(100, 100, 500, 400);
+                        dialog.setBounds(100, 100, 500, 600);
                         dialog.getContentPane().setLayout(new BorderLayout());
-    
-                        JTextArea textArea = new JTextArea(contenidoTicket);
+
+                        // Crear área de texto con estilo
+                        JTextArea textArea = new JTextArea(contenidoTicket.toString());
                         textArea.setEditable(false);
+                        textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+                        textArea.setMargin(new Insets(10, 10, 10, 10));
+                        
                         JScrollPane scrollPane = new JScrollPane(textArea);
                         dialog.getContentPane().add(scrollPane, BorderLayout.CENTER);
-    
+
+                        // Botón para cerrar/imprimir
+                        JPanel buttonPanel = new JPanel();
                         JButton btnCerrar = new JButton("Cerrar");
-                        btnCerrar.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                dialog.dispose();
-                            }
-                        });
+                        JButton btnImprimirReal = new JButton("Imprimir");
+
     
-                        JPanel panelBoton = new JPanel();
-                        panelBoton.add(btnCerrar);
-                        dialog.getContentPane().add(panelBoton, BorderLayout.SOUTH);
-    
-                        dialog.setVisible(true);
-                    } else {
-                        JOptionPane.showMessageDialog(frameImprimirTicket, "No se encontró el ticket para la identificación proporcionada.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-    
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(frameImprimirTicket, "Error al obtener el ticket: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
+                        btnCerrar.addActionListener(e1 -> dialog.dispose());
+                        btnImprimirReal.addActionListener(e1 -> {
+                        try {
+                            textArea.print();
+                        } catch (PrinterException ex) {
+                            JOptionPane.showMessageDialog(dialog, 
+                                "Error al imprimir: " + ex.getMessage(), 
+                                "Error", 
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+                    });
+
+                    buttonPanel.add(btnImprimirReal);
+                    buttonPanel.add(btnCerrar);
+                    dialog.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+                    dialog.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(frameImprimirTicket,
+                        "No se encontró el ticket para la identificación proporcionada.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(frameImprimirTicket,
+                    "Error al obtener el ticket: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
             }
         });
     
@@ -543,10 +594,9 @@ public class InterfazGrafica {
                             return;
                         }
     
-                        String query = "UPDATE Ticket t "
-                                     + "JOIN Pasajero p ON t.pasajero_id = p.id "
-                                     + "SET t.clase = ?, t.tarifa = ? "
-                                     + "WHERE p.identificacion = ?";
+                        String query = "UPDATE Ticket t " +
+                        "JOIN Pasajero p ON t.idPasajero = p.id " + "SET t.clase = ?, t.tarifa = ? " +
+                        "WHERE p.identificacion = ?";
     
                         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/basedatos", "root", "eymerl26");
                              PreparedStatement ps = conn.prepareStatement(query)) {
