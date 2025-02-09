@@ -77,5 +77,6 @@
         "JAVA\\ESTRUCTURA DE DATOS\\lib\\jgoodies-looks-2.4.1.jar",
         "JAVA\\ESTRUCTURA DE DATOS\\lib\\junit-4.6.jar",
         "JAVA\\ESTRUCTURA DE DATOS\\lib\\mysql-connector-j-9.1.0.jar"
-    ]
+    ],
+    "folder-color.pathColors": []
 }
