@@ -95,6 +95,14 @@
         {
             "path": "PROGRAMACION\\HTML\\",
             "color": "foldercustomization.AnsiColor214"
+        },
+        {
+            "path": "PROGRAMACION\\HTML\\IMAGENES\\",
+            "color": "foldercustomization.AnsiColor79"
+        },
+        {
+            "path": "PROGRAMACION\\HTML\\CSS BASICO\\",
+            "color": "foldercustomization.AnsiColor117"
         }
     ]
 }
