@@ -79,5 +79,22 @@
         "JAVA\\ESTRUCTURA DE DATOS\\lib\\mysql-connector-j-9.1.0.jar"
     ],
     "folder-color.pathColors": [],
-    "folder-customization.folders": []
+    "folder-customization.folders": [
+        {
+            "path": "PROGRAMACION\\PYTHON\\",
+            "color": "foldercustomization.AnsiColor11"
+        },
+        {
+            "path": "PROGRAMACION\\C++\\",
+            "color": "foldercustomization.AnsiColor12"
+        },
+        {
+            "path": "PROGRAMACION\\JAVA\\",
+            "color": "foldercustomization.AnsiColor166"
+        },
+        {
+            "path": "PROGRAMACION\\HTML\\",
+            "color": "foldercustomization.AnsiColor214"
+        }
+    ]
 }
