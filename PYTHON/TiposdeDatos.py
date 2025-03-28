@@ -25,3 +25,7 @@ print(humano)
 print(type(humano))
 
 print("Hola " + nombreCompleto + " tu tienes " + str(edad) + " años y mides " + str(altura) + " metros y tu eres humano? " + str(humano))
+
+sin_valor = None # Dato tipo None
+print(sin_valor)
+print(type(sin_valor))
